@@ -49,7 +49,12 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    proxy: {
+      '/api/': {
+        target: 'http://127.0.0.1:3000/',
+        secure: false
+      }
+    }
   },
   performance: {
     hints: false
