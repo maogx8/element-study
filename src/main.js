@@ -12,7 +12,9 @@ Vue.use(ElementUI)
 Vue.prototype.$ajax = axios.create({
   baseURL: '/api/',
   timeout: 1000,
-  headers: { 'Content-Type': 'application/json' }
+  headers: {
+    'Content-Type': 'application/json'
+  }
 })
 
 
