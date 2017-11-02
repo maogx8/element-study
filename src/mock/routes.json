@@ -1,0 +1,6 @@
+{
+    "/api/*": "/$1",
+    "/users/:name": "/users?name=:name",
+    "/users/:name/check": "/users?name=:name",
+    "/outh2/token": "/token"
+}

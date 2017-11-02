@@ -5,13 +5,15 @@
   "author": "maoguangxian <maoguangxian@famulei.com>",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot && node src/mock/index",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "mock": "node src/mock/index"
   },
   "dependencies": {
     "axios": "^0.17.0",
-    "element-ui": "^2.0.0-beta.1",
+    "element-ui": "^2.0.2",
     "iview": "^2.5.1",
+    "json-server": "^0.12.0",
     "style-loader": "^0.19.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",

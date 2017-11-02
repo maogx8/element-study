@@ -10,7 +10,7 @@ const service = axios.create({
 // request拦截器
 service.interceptors.request.use(config => {
     if (true) {
-        token = '123456789'
+        const token = '123456789'
         config.headers['Authorization'] = 'Bearer ' + token // 让每个请求携带自定义token 请根据实际情况自行修改
     }
     return config
@@ -22,28 +22,23 @@ service.interceptors.request.use(config => {
 
 // respone拦截器
 service.interceptors.response.use(
+    // 1xx 2xx 3xx 响应码的响应处理逻辑
     response => {
-        const code = response.status.toString()
-        const data = response.data
-        if (code[0] !== 2) {
-            Message({
-                message: data.message,
-                type: 'error',
-                duration: 5 * 1000
-            })
-            return Promise.reject('error')
-        } else {
-            return data
-        }
+
+        return response
     },
+
+    // 4xx 5xx 响应码的响应处理逻辑
     error => {
         console.log('err' + error)// for debug
-        Message({
-            message: error.message,
-            type: 'error',
-            duration: 5 * 1000
-        })
+        console.log(error.response)
+        // Message({
+        //     message: error.message,
+        //     type: 'error',
+        //     duration: 5 * 1000
+        // })
         return Promise.reject(error)
+        //return error
     }
 )
 

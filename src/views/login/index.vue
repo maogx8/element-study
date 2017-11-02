@@ -68,9 +68,10 @@
 </template>
 
 <script>
+import { isUsernameCanRegister } from '@/utils/validate'
 export default {
   data() {
-    var validatePass2 = (rule, value, callback) => {
+    const validatePass2 = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请再次输入密码'))
       } else if (value !== this.register.password) {
@@ -79,6 +80,11 @@ export default {
         callback()
       }
     }
+
+    const validateUsername = (rule, value, callback) => {
+      isUsernameCanRegister(value, callback)
+    }
+
     return {
       login: {
         name: '',
@@ -96,6 +102,10 @@ export default {
             min: 3,
             max: 20,
             message: '长度在 3 到 20 个字符',
+            trigger: 'blur'
+          },
+          {
+            validator: validateUsername,
             trigger: 'blur'
           }
         ],
